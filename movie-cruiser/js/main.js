@@ -4,13 +4,13 @@ var mp = {};
 var MovieN;
 function GetMovie()
 {
-	document.getElementById("showId").innerHTML = "";
-	let searchMovie = document.getElementById("searchId").value;
+	$('#showId').html("");
+	let searchMovie = $('#searchId').val();
 	fetch(`https://api.themoviedb.org/3/search/movie?api_key=76291c13d401cd2a67373f686bd00293&language=en-US&query=${searchMovie}&page=1&include_adult=false`)
 	 .then((res) => { res.json()
 	 	.then((data) => {
 	 		var par=0;
-			document.getElementById("showId").innerHTML = '';
+			$('#showId').html("");
 			for(let i=0;i<data.results.length;i+=1){
 			   obj = {};
 			   obj.title = data.results[i].title;
@@ -21,10 +21,9 @@ function GetMovie()
 			   		par=i;
 			   		mp[i]=obj;
 					if(i%3 == 0){
-						document.getElementById("showId").innerHTML += `<div class="row">`;
+						$("#showId").append(`<div class="row">`);
 					}
-					var show = 
-					`<div class="col-sm-4">
+					$("#showId").append(`<div class="col-sm-4">
 						<div class="card">
 						    <div class="card-image waves-effect waves-block waves-light">
 						      <img class="activator" src="${obj.poster_path}">
@@ -41,13 +40,11 @@ function GetMovie()
 						    </div>
 						</div>
 					</div>
-					`;
-					document.getElementById("showId").innerHTML += show;
+					`);
 					if(i%3 == 2){
-						document.getElementById("showId").innerHTML += `</div>`; 
+						$("#showId").append(`</div>`); 
 					}
-				}
-				document.getElementById("searchId").innerHTML = "";
+			}
 	 	})
 	 })
 }

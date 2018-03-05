@@ -6,5 +6,4 @@ function DeleteCollection(collec_input) {
     }
     if(flag!=-1)
         collection.splice(flag,1);
-    getBack();
 }

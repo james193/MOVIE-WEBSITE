@@ -2,116 +2,23 @@
 <html>
 <head>
 	<title>MOVIE-CRUISER</title>
-	<!--Import Google Icon Font-->
-    
-    
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 <body>
-	<div class="conatiner">
-		<!-- NAV BAR -->
-	    <div class="navbar-fixed" id="nav">
-	        <nav>
-	            <div class="nav-wrapper grey darken-3">
-	                <a href="#!" class="brand-logo center">Movie Cruiser</a>
-	                <ul class="right hide-on-med-and-down">
-	                   <li>
-	                       <a class="waves-effect waves-light btn" id="home" onclick="getBack()">Home</a>
-	                   </li>
-	                   <li>
-	                   		<a class="waves-effect waves-light btn" onclick="ViewCollection()">My Collection</a>
-	                   </li>
-	               </ul>
-	            </div>
-	        </nav>
-	    </div>
-	    <hr>
-	  <!-- Modal -->
-		
+	<div class="conatiner" id='maintain'>
 
-		<!--SEARCH-->
-		<div class="container" id="searchMe">
-	        <div class="row">
-	            <div class="input-field col s6">
-	                <input placeholder="Type Movie Name" id="searchId" type="text" class="validate">
-	                <label for="searchId" ">Search Movie</label>
-	            </div>
-	            <div class="col s3">
-	                <a class="waves-effect waves-light btn" onclick="GetMovie()">Search</a>
-	            </div>
-	        </div>
-	    </div>
-		
-		<!--HTML DISPLAY -->	
-		<div class="row">
-	        <div class="container col l11" id="showId">
-	        </div>
-	    </div>
-
-	    <!--modal-->
-	    <div id="modalB" class="modal">
-            <div class="modal-content">
-                <h4>Which Collection do you want to add this movie to</h4>
-                <p >Here are the List of Existing collections</p>
-                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-                <button data-target="modalC" class="btn modal-trigger">Create New Collection</button>
-                <br>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-
-        <div id="modalC" class="modal">
-            <div class="modal-content">
-                <h4>New Collection</h4>
-                <label for="Create-Collection">Type name for your collection : </label>
-			    <input type="text" class="form-control" id="Create-Collection">
-			    <button class="col s1 btn " id="add" onclick="CreateCollection()">Add</button>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-        <div id="modalD" class="modal">
-            <div class="modal-content">
-                <h4>Delete Collection</h4>
-                <label for="collec_del">Type name for the collection : </label>
-			    <input type="text" class="form-control" id="collec_del">
-			    <button class="col s1 btn" onclick="DeleteCollection(document.getElementById('collec_del').value)" id="Deleting">Delete</button>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-        <div id="modalE" class="modal">
-            <div class="modal-content">
-                <h4>Edit</h4>
-                <label for="collec_edit">Enter name of the collection you want to edit : </label>
-                <input type="text" class="form-control" id="collec_edit1" placeholder="Old Name">
-                <input type="text" class="form-control" id="collec_edit2" placeholder="New Name">
-                <button class="col s1 btn" onclick="EditCollection(document.getElementById('collec_edit1').value,document.getElementById('collec_edit2').value)" id="Editing">Edit</button>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-
-        <!--dropdown-->
-        <ul id='dropdown1' class='dropdown-content'>
-		    
-		</ul>
     </div>
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="js/index.js"></script>
     <!-- <script src="js/AllOne.js"></script> -->
-	<script src="js/modals.js"></script>
+    <script src="js/modals.js"></script>
+    <script>everything();</script>
     <script src="js/main.js"></script>
     <script src="js/displays.js"></script>
     <script src="js/createCollection.js"></script>

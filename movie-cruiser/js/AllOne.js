@@ -4,13 +4,13 @@ var mp = {};
 var MovieN;
 function GetMovie()
 {
-	document.getElementById("showId").innerHTML = "";
-	let searchMovie = document.getElementById("searchId").value;
+	$('#showId').html("");
+	let searchMovie = $('#searchId').val();
 	fetch(`https://api.themoviedb.org/3/search/movie?api_key=76291c13d401cd2a67373f686bd00293&language=en-US&query=${searchMovie}&page=1&include_adult=false`)
 	 .then((res) => { res.json()
 	 	.then((data) => {
 	 		var par=0;
-			document.getElementById("showId").innerHTML = '';
+			$('#showId').html("");
 			for(let i=0;i<data.results.length;i+=1){
 			   obj = {};
 			   obj.title = data.results[i].title;
@@ -21,10 +21,9 @@ function GetMovie()
 			   		par=i;
 			   		mp[i]=obj;
 					if(i%3 == 0){
-						document.getElementById("showId").innerHTML += `<div class="row">`;
+						$("#showId").append(`<div class="row">`);
 					}
-					var show = 
-					`<div class="col-sm-4">
+					$("#showId").append(`<div class="col-sm-4">
 						<div class="card">
 						    <div class="card-image waves-effect waves-block waves-light">
 						      <img class="activator" src="${obj.poster_path}">
@@ -41,12 +40,11 @@ function GetMovie()
 						    </div>
 						</div>
 					</div>
-					`;
-					document.getElementById("showId").innerHTML += show;
+					`);
 					if(i%3 == 2){
-						document.getElementById("showId").innerHTML += `</div>`; 
+						$("#showId").append(`</div>`); 
 					}
-				}
+			}
 	 	})
 	 })
 }
@@ -56,15 +54,12 @@ function emit(some){
 }
 function DisplayDropdown()
 {
-	document.getElementById('dropdown1').innerHTML = '';
-	var text = '';
-	
+	$("#dropdown1").html("");
 	if(collection.length!=0){
 		for(var i=0;i<collection.length;i+=1){
-			text += `
-			<li><a href="#!" onclick="AddMovie(document.getElementById('${collection[i].name}').id)" id="${collection[i].name}">${collection[i].name}</a></li>`;
+			$("#dropdown1").append(`
+			<li><a href="#!" onclick="AddMovie(document.getElementById('${collection[i].name}').id)" id="${collection[i].name}">${collection[i].name}</a></li>`);
 		}
-		document.getElementById('dropdown1').innerHTML += text;
 	}
 }
 function AddMovie(collectionN)
@@ -77,7 +72,7 @@ function AddMovie(collectionN)
 	}
 }
 function CreateCollection() {
-   var genre = document.getElementById('Create-Collection').value;
+   var genre = $('#Create-Collection').val();
    var object = {};
    object.name = genre;
    object.movies = [];
@@ -109,12 +104,11 @@ function RemoveMovie(i,j)
 
 function ViewIndividualCollection(name1)
 {
-	document.getElementById('showId').innerHTML = '';
+	$('#showId').html('');
 	for(var k=0;k<collection.length;k+=1){
 		if(collection[k].name == name1){
 			for(var p=0;p<collection[k].movies.length;p+=1){
-				document.getElementById('showId').innerHTML +=
-				`<div class="col s12 m4">
+				$('#showId').append(`<div class="col s12 m4">
 					<div class="card">
 					    <div class="card-image waves-effect waves-block waves-light">
 					      <img class="activator" src="${collection[k].movies[p].poster_path}">
@@ -130,41 +124,37 @@ function ViewIndividualCollection(name1)
 					      <p><h5>Rating</h5> ${collection[k].movies[p].vote_average}</p>
 					    </div>
 					</div>
-				</div>`;
+				</div>`);
 			}
 		}
 	}
 }
 function ViewCollection()
 {
-	var clear2 = document.getElementById("showId");
-	clear2.innerHTML = '';
-    var text = ` <div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red">
-      <i class="large material-icons">menu</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating red modal-trigger" id="adder1" href="#modalC"><i class="material-icons">add</i></a></li>
-      <li><a class="btn-floating yellow modal-trigger darken-1" href="#modalD"><i class="material-icons">delete</i></a></li>
-      <li><a class="btn-floating green modal-trigger" href="#modalE"><i class="material-icons">edit</i></a></li>
-    </ul>
-  </div>`;
-  clear2.innerHTML += text;
+	$('#showId').html('');
+	$('#showId').append(` <div class="fixed-action-btn horizontal">
+	    <a class="btn-floating btn-large red">
+	      <i class="large material-icons">menu</i>
+	    </a>
+	    <ul>
+	      <li><a class="btn-floating red modal-trigger" id="adder1" href="#modalC"><i class="material-icons">add</i></a></li>
+	      <li><a class="btn-floating yellow modal-trigger darken-1" href="#modalD"><i class="material-icons">delete</i></a></li>
+	      <li><a class="btn-floating green modal-trigger" href="#modalE"><i class="material-icons">edit</i></a></li>
+	    </ul>
+	  </div>`);
     if (collection.length == 0) {
-        var text2 = `<h4>Empty Collection</h4>`
-        clear2.innerHTML+=text2;
+        $('#showId').append(`<h4>Empty Collection</h4>`);
     } else {
-        var text2 = `<div class="collection" id="collection-main">`;
+        $('#showId').append(`<div class="collection" id="collection-main">`);
         for (var i = 0; i < collection.length; i++)
         {
-            text2 += `<a href="#!" onclick="ViewIndividualCollection(document.getElementById('${collection[i].name}').id)" id="`+collection[i].name+`" class="collection-item">`+collection[i].name+`</a>`;
+        	$('#showId').append(`<a href="#!" onclick="ViewIndividualCollection(document.getElementById('${collection[i].name}').id)" id="${collection[i].name}" class="collection-item">${collection[i].name}</a><br>`);
         }
-        text2 += `</div>`;
-        clear2.innerHTML+=text2;
+        $('#showId').append(`</div>`);
     }
 }
 
 function getBack()
 {
-	document.getElementById('showId').innerHTML = '';
+	$('#showId').html('');
 }
