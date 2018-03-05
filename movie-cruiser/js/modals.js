@@ -1,0 +1,12 @@
+$(document).ready(function(){
+	$("#modalB").modal();
+});
+$(document).ready(function(){
+	$("#modalC").modal();
+});
+$(document).ready(function(){
+	$("#modalD").modal();
+});
+$(document).ready(function(){
+	$("#modalE").modal();
+});
