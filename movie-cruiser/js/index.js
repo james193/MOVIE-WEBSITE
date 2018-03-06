@@ -1,4 +1,4 @@
-function everything()
+export function everything()
 {
 	$('#maintain').append(`<!-- NAV BAR -->
 	    <div class="navbar-fixed" id="nav">
@@ -7,10 +7,10 @@ function everything()
 	                <a href="#!" class="brand-logo center">Movie Cruiser</a>
 	                <ul class="right hide-on-med-and-down">
 	                   <li>
-	                       <a class="waves-effect waves-light btn" id="gohome" onclick="getBack()">Home</a>
+	                       <a class="waves-effect waves-light btn" id="gohome" >Home</a>
 	                   </li>
 	                   <li>
-	                   		<a class="waves-effect waves-light btn" id="viewCol" onclick="ViewCollection()">My Collection</a>
+	                   		<a class="waves-effect waves-light btn" id="viewCol" >My Collection</a>
 	                   </li>
 	               </ul>
 	            </div>
@@ -25,7 +25,7 @@ function everything()
 	                <label for="searchId" ">Search Movie</label>
 	            </div>
 	            <div class="col s3">
-	                <a class="waves-effect waves-light btn" id="goMovie" onclick="GetMovie()">Search</a>
+	                <a class="waves-effect waves-light btn" id="goMovie" >Search</a>
 	            </div>
 	        </div>
 	    </div>
@@ -55,7 +55,7 @@ function everything()
                 <h4>New Collection</h4>
                 <label for="Create-Collection">Type name for your collection : </label>
 			    <input type="text" class="form-control" id="Create-Collection">
-			    <button class="col s1 btn " id="add" onclick="CreateCollection()">Add</button>
+			    <button class="col s1 btn " id="add" >Add</button>
             </div>
             <div class="modal-footer">
                 <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
@@ -66,6 +66,7 @@ function everything()
                 <h4>Delete Collection</h4>
                 <label for="collec_del">Type name for the collection : </label>
 			    <input type="text" class="form-control" id="collec_del">
+			    <!---TO EDIT HERE--->
 			    <button class="col s1 btn" onclick="DeleteCollection($('#collec_del').val())" id="Deleting">Delete</button>
             </div>
             <div class="modal-footer">
@@ -78,6 +79,7 @@ function everything()
                 <label for="collec_edit">Enter name of the collection you want to edit : </label>
                 <input type="text" class="form-control" id="collec_edit1" placeholder="Old Name">
                 <input type="text" class="form-control" id="collec_edit2" placeholder="New Name">
+                <!---TO EDIT HERE--->
                 <button class="col s1 btn" onclick="EditCollection($('#collec_edit1').val(),$('#collec_edit2').val())" id="Editing">Edit</button>
             </div>
             <div class="modal-footer">

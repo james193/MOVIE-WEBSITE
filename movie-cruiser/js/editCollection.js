@@ -1,4 +1,5 @@
-function EditCollection(old,new1)
+import {getBack} from './main'
+export function EditCollection(collection,old,new1)
 {
     for(var i=0;i<collection.length;i++)
     {

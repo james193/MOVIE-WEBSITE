@@ -1,9 +1,9 @@
-function CreateCollection() {
-   var genre = $('#Create-Collection').val();
-   var object = {};
-   object.name = genre;
-   object.movies = [];
-   collection.push(object);
-   DisplayDropdown();
-   
+import {DisplayDropdown} from './displays'
+export function CreateCollection(collection) {
+   let genre = $('#Create-Collection').val();
+   let objects = {};
+   objects.name = genre;
+   objects.movies = [];
+   collection.push(objects);
+   DisplayDropdown(collection); 
 }
